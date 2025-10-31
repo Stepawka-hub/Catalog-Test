@@ -1,5 +1,7 @@
+export type TProductId = number;
+
 export type TProduct = {
-  id: number;
+  id: TProductId;
   title: string;
   description: string;
   category: string;
