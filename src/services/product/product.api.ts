@@ -8,6 +8,7 @@ import {
 } from "./product.types";
 
 class ProductAPI extends BaseAPI {
+  // Todo: Select fields
   fetchAllProducts = async (
     limit: number = 0,
     skip: number = 0
