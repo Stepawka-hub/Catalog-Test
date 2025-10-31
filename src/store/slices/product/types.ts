@@ -1,4 +1,4 @@
-import { TProduct } from "@/shared/types";
+import { TPagination, TProduct } from "@/shared/types";
 
 export type TProductState = {
   products: TProduct[];
@@ -8,4 +8,5 @@ export type TProductState = {
     isDeleting: boolean;
     isEditing: boolean;
   };
+  pagination: TPagination;
 };

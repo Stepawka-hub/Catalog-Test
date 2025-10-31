@@ -1,13 +1,30 @@
 import api from "../api-instance";
 import { BaseAPI } from "../base";
-import { TProduct } from "@/shared/types";
 import { transformApiProduct } from "@/shared/utils";
-import { TProductListResponse } from "./product.types";
+import {
+  TFetchAllProductsParams,
+  TFetchAllProductsResponse,
+  TProductListResponse,
+} from "./product.types";
 
 class ProductAPI extends BaseAPI {
-  fetchAllProducts = async (): Promise<TProduct[]> => {
-    const { data } = await this.api.get<TProductListResponse>("products");
-    return data.products.map(transformApiProduct);
+  fetchAllProducts = async (
+    limit: number = 0,
+    skip: number = 0
+  ): Promise<TFetchAllProductsResponse> => {
+    const params: TFetchAllProductsParams = {
+      limit,
+      skip,
+    };
+
+    const { data } = await this.api.get<TProductListResponse>("products", {
+      params,
+    });
+
+    return {
+      totalCount: data.total,
+      products: data.products.map(transformApiProduct),
+    };
   };
 }
 

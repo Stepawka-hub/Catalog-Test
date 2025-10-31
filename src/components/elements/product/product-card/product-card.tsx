@@ -11,7 +11,7 @@ export const ProductCard: FC<TProductCardProps> = ({
   };
 
   return (
-    <div
+    <article
       className="flex flex-col items-center min-h-50 bg-neutral-900 rounded-lg hover:cursor-pointer"
       onClick={handleCardClick}
     >
@@ -24,6 +24,6 @@ export const ProductCard: FC<TProductCardProps> = ({
       <div className="text-center">
         <h3>{product.title}</h3>
       </div>
-    </div>
+    </article>
   );
 };
