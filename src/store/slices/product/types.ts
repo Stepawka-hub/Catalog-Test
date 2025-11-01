@@ -1,4 +1,4 @@
-import { TPagination, TProduct } from "@/shared/types";
+import { TPagination, TProduct, TProductFilter } from "@/shared/types";
 
 export type TProductState = {
   products: TProduct[];
@@ -10,4 +10,5 @@ export type TProductState = {
   };
   pagination: TPagination;
   searchQuery: string;
+  filter: TProductFilter;
 };

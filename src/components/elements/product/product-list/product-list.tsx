@@ -17,6 +17,7 @@ export const ProductListUI: FC<TProductListUIProps> = ({
     return <section className="product-grid">{skeletons}</section>;
   }
 
+  // Todo: Переделать
   if (!products.length) {
     return <div>No data found</div>;
   }

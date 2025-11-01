@@ -22,13 +22,13 @@ export const Search: FC<TSearchProps> = ({
     <div className="group flex items-center gap-1 w-full py-1 px-3 bg-neutral-900 rounded-lg">
       <CiSearch
         size="1.75rem"
-        className="group-focus-within:text-orange-600 transition-colors"
+        className="group-focus-within:text-orange-500 transition-colors"
       />
       <input
+        className="w-full py-1.5 px-2 rounded-lg text-lg focus:outline-none caret-orange-500 caret-width-2"
         value={value}
         placeholder={placeholder}
         onChange={handleChange}
-        className="w-full py-2 px-2 rounded-lg text-lg focus:outline-none caret-orange-600 caret-width-2"
       />
     </div>
   );

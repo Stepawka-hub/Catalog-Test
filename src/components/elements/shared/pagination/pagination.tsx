@@ -33,7 +33,7 @@ export const Pagination: FC<TPaginationProps> = ({
               "w-11 h-11 rounded-full bg-neutral-900 hover:cursor-pointer",
               !isActive &&
                 "hover:opacity-85 active:opacity-75 transition duration-200 ease-in-out",
-              isActive && "bg-orange-600"
+              isActive && "bg-orange-500"
             )}
             onClick={() => onPageChange(page)}
           >

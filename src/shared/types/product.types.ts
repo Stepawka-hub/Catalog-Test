@@ -20,3 +20,5 @@ export type TProduct = {
   thumbnail: string;
   images: string[];
 };
+
+export type TProductFilter = "all" | "favorites";
