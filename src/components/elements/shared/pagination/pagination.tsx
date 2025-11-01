@@ -23,14 +23,14 @@ export const Pagination: FC<TPaginationProps> = ({
   for (let i = startPage; i <= endPage; i++) pages.push(i);
 
   return (
-    <div className="flex justify-center gap-3 mt-8 text-2xl">
+    <div className="flex justify-center gap-3 mt-9 text-xl">
       {pages.map((page) => {
         const isActive = page === currentPage;
         return (
           <button
             key={page}
             className={clsx(
-              "w-12 h-12 rounded-full bg-neutral-900 hover:cursor-pointer",
+              "w-11 h-11 rounded-full bg-neutral-900 hover:cursor-pointer",
               !isActive &&
                 "hover:opacity-85 active:opacity-75 transition duration-200 ease-in-out",
               isActive && "bg-orange-600"

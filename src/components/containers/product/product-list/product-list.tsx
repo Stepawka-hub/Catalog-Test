@@ -44,6 +44,7 @@ export const ProductList: FC = () => {
       <ProductListUI
         products={products}
         isLoading={isFetching}
+        limit={limit}
         onCardClick={onCardClick}
       />
       <Pagination

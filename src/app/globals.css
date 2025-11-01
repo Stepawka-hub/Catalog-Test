@@ -19,6 +19,13 @@
   }
 }
 
+.product-grid {
+  @apply grid gap-y-4 
+         sm:grid-cols-3 sm:gap-x-3 sm:gap-y-3 
+         md:grid-cols-4 md:gap-y-4 md:gap-x-4 
+         lg:grid-cols-5 lg:gap-x-6 lg:gap-y-6;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

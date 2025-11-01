@@ -1,14 +1,20 @@
-import { FC } from "react";
-import { ProductCard } from "@/components/elements";
+import { FC, useMemo } from "react";
+import { ProductCard, SkeletonCard } from "@/components/elements";
 import { TProductListUIProps } from "./types";
 
 export const ProductListUI: FC<TProductListUIProps> = ({
   products,
   isLoading,
+  limit,
   ...props
 }) => {
+  const skeletons = useMemo(
+    () => Array.from({ length: limit }, (_, i) => <SkeletonCard key={i + 1} />),
+    [limit]
+  );
+
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <section className="product-grid">{skeletons}</section>;
   }
 
   if (!products.length) {
@@ -19,9 +25,5 @@ export const ProductListUI: FC<TProductListUIProps> = ({
     <ProductCard key={p.id} product={p} {...props} />
   ));
 
-  return (
-    <section className="grid gap-x-8 gap-y-8 sm:grid-cols-4 lg:grid-cols-6">
-      {productElements}
-    </section>
-  );
+  return <section className="product-grid">{productElements}</section>;
 };
