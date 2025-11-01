@@ -9,4 +9,5 @@ export type TProductState = {
     isEditing: boolean;
   };
   pagination: TPagination;
+  searchQuery: string;
 };

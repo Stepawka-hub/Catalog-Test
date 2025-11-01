@@ -16,6 +16,7 @@ const initialState: TProductState = {
     currentPage: 1,
     totalCount: 0,
   },
+  searchQuery: "",
 };
 
 export const productSlice = createSlice({
@@ -25,11 +26,15 @@ export const productSlice = createSlice({
     setCurrentPage: (state, { payload }: PayloadAction<number>) => {
       state.pagination.currentPage = payload;
     },
+    setSearchQuery: (state, { payload }: PayloadAction<string>) => {
+      state.searchQuery = payload;
+    },
   },
   selectors: {
     getProducts: (state) => state.products,
     getProductPagination: (state) => state.pagination,
     getIsFetchingProducts: (state) => state.productLoading.isFetching,
+    getSearchQuery: (state) => state.searchQuery,
   },
   extraReducers(builder) {
     builder
@@ -52,6 +57,10 @@ export const productSlice = createSlice({
 });
 
 export const productReducer = productSlice.reducer;
-export const { setCurrentPage } = productSlice.actions;
-export const { getProducts, getProductPagination, getIsFetchingProducts } =
-  productSlice.selectors;
+export const { setCurrentPage, setSearchQuery } = productSlice.actions;
+export const {
+  getProducts,
+  getProductPagination,
+  getIsFetchingProducts,
+  getSearchQuery,
+} = productSlice.selectors;

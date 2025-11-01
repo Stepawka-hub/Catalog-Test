@@ -3,3 +3,5 @@ export type TPagination = {
   limit: number;
   totalCount: number;
 };
+
+export type TTimeout = ReturnType<typeof setTimeout> | undefined;
