@@ -1,10 +1,11 @@
 import { FC, useMemo } from "react";
-import { ProductCard, SkeletonCard } from "@/components/elements";
+import { EmptyResults, ProductCard, SkeletonCard } from "@/components/elements";
 import { TProductListUIProps } from "./types";
 
 export const ProductListUI: FC<TProductListUIProps> = ({
   products,
   isLoading,
+  isFetched,
   limit,
   ...props
 }) => {
@@ -13,13 +14,14 @@ export const ProductListUI: FC<TProductListUIProps> = ({
     [limit]
   );
 
-  if (isLoading) {
+  if (isLoading || !isFetched) {
     return <section className="product-grid">{skeletons}</section>;
   }
 
-  // Todo: Переделать
   if (!products.length) {
-    return <div>No data found</div>;
+    return (
+      <EmptyResults label="По запросу ничего на найдено" className="mt-10" />
+    );
   }
 
   const productElements = products.map((p) => (

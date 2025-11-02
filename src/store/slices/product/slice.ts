@@ -5,12 +5,8 @@ import { TProduct, TProductFilter, TProductId } from "@/shared/types";
 
 const initialState: TProductState = {
   products: [],
-  productLoading: {
-    isFetching: false,
-    isCreating: false,
-    isDeleting: false,
-    isEditing: false,
-  },
+  isProductsFetched: false,
+  isFetchingProducts: false,
   pagination: {
     limit: 20,
     currentPage: 1,
@@ -39,39 +35,51 @@ export const productSlice = createSlice({
         product.isLiked = !product.isLiked;
       }
     },
+    deleteProduct: (state, { payload }: PayloadAction<TProductId>) => {
+      state.products = state.products.filter((p) => p.id !== payload);
+    },
   },
   selectors: {
     getProducts: (state) => state.products,
     getProductPagination: (state) => state.pagination,
-    getIsFetchingProducts: (state) => state.productLoading.isFetching,
+    getIsFetchingProducts: (state) => state.isFetchingProducts,
+    getIsProductsFetched: (state) => state.isProductsFetched,
     getSearchQuery: (state) => state.searchQuery,
     getFilter: (state) => state.filter,
   },
   extraReducers(builder) {
     builder
       .addCase(fetchAllProductsAsync.pending, (state) => {
-        state.productLoading.isFetching = true;
+        state.isFetchingProducts = true;
       })
       .addCase(
         fetchAllProductsAsync.fulfilled,
         (state, { payload }: PayloadAction<TProduct[]>) => {
-          state.productLoading.isFetching = false;
+          state.isFetchingProducts = false;
+          state.isProductsFetched = true;
           state.products = payload;
         }
       )
       .addCase(fetchAllProductsAsync.rejected, (state) => {
-        state.productLoading.isFetching = false;
+        state.isFetchingProducts = false;
+        state.isProductsFetched = true;
       });
   },
 });
 
 export const productReducer = productSlice.reducer;
-export const { setCurrentPage, setSearchQuery, setFilter, toggleLike } =
-  productSlice.actions;
+export const {
+  setCurrentPage,
+  setSearchQuery,
+  setFilter,
+  toggleLike,
+  deleteProduct,
+} = productSlice.actions;
 export const {
   getProducts,
   getProductPagination,
   getIsFetchingProducts,
   getSearchQuery,
   getFilter,
+  getIsProductsFetched,
 } = productSlice.selectors;

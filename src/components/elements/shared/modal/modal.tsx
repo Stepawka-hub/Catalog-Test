@@ -22,7 +22,7 @@ export const Modal: FC<TModalProps> = ({ isOpen, children, onClose }) => {
       className="fixed inset-0 flex items-center justify-center backdrop-blur-xs z-10"
       onClick={handleFadeClick}
     >
-      <div className="relative max-w-lg w-full p-6 bg-zinc-800 rounded-lg shadow-lg">
+      <div className="relative max-w-lg w-full p-6 mx-4 bg-zinc-800 rounded-lg shadow-lg">
         <button
           className="absolute top-2 right-2 hover:cursor-pointer hover:opacity-80 active:opacity-70 transition-opacity duration-200"
           onClick={onClose}

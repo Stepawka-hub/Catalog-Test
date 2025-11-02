@@ -14,7 +14,10 @@ export const ProductCard: FC<TProductCardProps> = ({
   product,
   onCardClick,
   onToggleLike,
+  onDelete,
 }) => {
+  const { title, price, rating, thumbnail, isLiked } = product;
+
   const handleCardClick = () => {
     onCardClick(product.id);
   };
@@ -26,6 +29,7 @@ export const ProductCard: FC<TProductCardProps> = ({
 
   const handleDelete = (e: MouseEvent) => {
     e.stopPropagation();
+    onDelete(product.id);
   };
 
   const handleEdit = (e: MouseEvent) => {
@@ -38,39 +42,38 @@ export const ProductCard: FC<TProductCardProps> = ({
       onClick={handleCardClick}
     >
       <Image
-        src={product.thumbnail}
         width={192}
         height={192}
-        alt={`${product.title} preview`}
+        src={thumbnail}
+        alt={`${title} preview`}
       />
       <div className="absolute w-full flex justify-between">
         <div className="flex gap-2 ml-2">
           <IconButton className="group" onClick={handleDelete}>
-            <MdDelete
-              size="1.25rem"
-              className="group-hover:text-red-500 transition-colors duration-200"
-            />
+            <MdDelete className="text-xl group-hover:text-red-500 transition-colors duration-200" />
           </IconButton>
           <IconButton onClick={handleEdit}>
-            <MdEdit size="1.25rem" />
+            <MdEdit className="text-xl" />
           </IconButton>
         </div>
         <div className="mr-2">
           <IconButton onClick={handleToggleLike}>
-            {product.isLiked ? (
-              <MdFavorite size="1.25rem" className="text-red-400" />
+            {isLiked ? (
+              <MdFavorite className="text-xl text-red-400" />
             ) : (
-              <MdFavoriteBorder size="1.25rem" />
+              <MdFavoriteBorder className="text-xl " />
             )}
           </IconButton>
         </div>
       </div>
       <div className="w-full flex flex-col gap-1">
-        <p className="text-xl text-green-400 font-medium">{product.price} ₽</p>
-        <h3 className="text-lg line-clamp-1">{product.title}</h3>
+        <p className="text-lg lg:text-xl text-green-400 font-medium">
+          {price} ₽
+        </p>
+        <h3 className="text-base lg:text-lg line-clamp-1">{title}</h3>
         <div className="flex gap-1 items-center">
-          <IoIosStar size="1.05rem" className="mb-0.5 text-orange-400" />
-          <span>{product.rating}</span>
+          <IoIosStar className="mb-0.5 text-orange-400 text-[1.05rem]" />
+          <span className="text-sm lg:text-base">{rating}</span>
         </div>
       </div>
     </article>

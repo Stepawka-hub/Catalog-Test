@@ -35,10 +35,7 @@ export const ProductFilter: FC = () => {
         className="group p-2.5 bg-neutral-900 rounded-full hover:cursor-pointer hover:opacity-85 active:opacity-75 transition-opacity duration-200"
         onClick={handleModalOpen}
       >
-        <MdFilterAlt
-          size="1.65rem"
-          className="group-hover:text-orange-500 transition-colors"
-        />
+        <MdFilterAlt className="text-xl sm:text-2xl md:text-[1.65rem] group-hover:text-orange-500 transition-colors" />
       </button>
       <Modal isOpen={isModalOpen} onClose={handleModalClose}>
         <h2 className="text-center text-xl font-medium mb-2">Фильтры</h2>

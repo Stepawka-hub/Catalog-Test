@@ -3,9 +3,11 @@
 import { FC, useCallback, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "@/store";
 import {
+  deleteProduct,
   fetchAllProductsAsync,
   getFilter,
   getIsFetchingProducts,
+  getIsProductsFetched,
   getProductPagination,
   getProducts,
   getSearchQuery,
@@ -33,6 +35,7 @@ export const ProductList: FC = () => {
   const router = useRouter();
   const products = useSelector(getProducts);
   const isFetching = useSelector(getIsFetchingProducts);
+  const isProductsFetched = useSelector(getIsProductsFetched);
 
   const { limit, currentPage } = useSelector(getProductPagination);
   const searchQuery = useSelector(getSearchQuery);
@@ -52,6 +55,13 @@ export const ProductList: FC = () => {
   const onToggleLike = useCallback(
     (productId: TProductId) => {
       dispatch(toggleLike(productId));
+    },
+    [dispatch]
+  );
+
+  const onProductDelete = useCallback(
+    (productId: TProductId) => {
+      dispatch(deleteProduct(productId));
     },
     [dispatch]
   );
@@ -78,9 +88,11 @@ export const ProductList: FC = () => {
       <ProductListUI
         products={paginatedProducts}
         isLoading={isFetching}
+        isFetched={isProductsFetched}
         limit={limit}
         onCardClick={onCardClick}
         onToggleLike={onToggleLike}
+        onDelete={onProductDelete}
       />
       <Pagination
         limit={limit}
