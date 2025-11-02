@@ -1,3 +1,5 @@
-import { ButtonHTMLAttributes } from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 
-export type TButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+export type TButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  startIcon: ReactNode;
+};

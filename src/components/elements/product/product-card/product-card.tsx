@@ -9,6 +9,7 @@ import { MdEdit } from "react-icons/md";
 import { IoIosStar } from "react-icons/io";
 
 import { IconButton } from "@/components/ui";
+import { Rating } from "../../shared";
 
 export const ProductCard: FC<TProductCardProps> = ({
   product,
@@ -71,10 +72,7 @@ export const ProductCard: FC<TProductCardProps> = ({
           {price} ₽
         </p>
         <h3 className="text-base lg:text-lg line-clamp-1">{title}</h3>
-        <div className="flex gap-1 items-center">
-          <IoIosStar className="mb-0.5 text-orange-400 text-[1.05rem]" />
-          <span className="text-sm lg:text-base">{rating}</span>
-        </div>
+        <Rating rating={rating} />
       </div>
     </article>
   );

@@ -3,3 +3,4 @@ export { Search } from "./search";
 export { SkeletonCard } from "./skeleton-card";
 export { Modal } from "./modal";
 export { EmptyResults } from "./empty-results";
+export { Rating } from "./rating";

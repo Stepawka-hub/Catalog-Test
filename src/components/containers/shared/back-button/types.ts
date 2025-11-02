@@ -1,5 +1,6 @@
-import { PropsWithChildren } from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 
-export type TBackButtonProps = PropsWithChildren<{
+export type TBackButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   path: string;
-}>;
+  startIcon: ReactNode;
+};
