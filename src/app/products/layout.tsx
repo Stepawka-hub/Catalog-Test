@@ -1,11 +1,14 @@
-export default function ProductsLayout({
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Product details",
+  description: "Product details",
+};
+
+export default function ProductLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <div className="flex min-h-screen items-center justify-center font-sans bg-neutral-800">
-      {children}
-    </div>
-  );
+  return <div className="min-h-screen font-sans bg-neutral-800">{children}</div>;
 }
