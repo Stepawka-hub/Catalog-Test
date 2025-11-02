@@ -1,4 +1,3 @@
-import { TProduct } from "@/shared/types";
 import { TListResponse } from "../types";
 
 export type TApiProduct = {
@@ -43,7 +42,3 @@ export type TApiProduct = {
 
 export type TProductListResponse = TListResponse<TApiProduct, "products">;
 
-export type TFetchAllProductsResponse = {
-  products: TProduct[];
-  totalCount: number;
-};

@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TProductState } from "./types";
 import { fetchAllProductsAsync } from "./thunks";
-import { TFetchAllProductsResponse } from "@/services/product";
-import { TProductFilter, TProductId } from "@/shared/types";
+import { TProduct, TProductFilter, TProductId } from "@/shared/types";
 
 const initialState: TProductState = {
   products: [],
@@ -15,7 +14,6 @@ const initialState: TProductState = {
   pagination: {
     limit: 20,
     currentPage: 1,
-    totalCount: 0,
   },
   searchQuery: "",
   filter: "all",
@@ -56,11 +54,9 @@ export const productSlice = createSlice({
       })
       .addCase(
         fetchAllProductsAsync.fulfilled,
-        (state, { payload }: PayloadAction<TFetchAllProductsResponse>) => {
-          const { totalCount, products } = payload;
+        (state, { payload }: PayloadAction<TProduct[]>) => {
           state.productLoading.isFetching = false;
-          state.products = products;
-          state.pagination.totalCount = totalCount;
+          state.products = payload;
         }
       )
       .addCase(fetchAllProductsAsync.rejected, (state) => {

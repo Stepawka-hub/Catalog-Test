@@ -4,9 +4,11 @@ import { FC, useCallback, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "@/store";
 import {
   fetchAllProductsAsync,
+  getFilter,
   getIsFetchingProducts,
   getProductPagination,
   getProducts,
+  getSearchQuery,
   setCurrentPage,
   toggleLike,
 } from "@/store/slices";
@@ -14,6 +16,7 @@ import { useRouter } from "next/navigation";
 import { ROUTES } from "@/config/routes";
 import { Pagination, ProductListUI } from "@/components/elements";
 import { TProductId } from "@/shared/types";
+import { filterProducts, paginateProducts } from "@/shared/utils";
 
 /*
   Архитектурное решение: 
@@ -29,8 +32,11 @@ export const ProductList: FC = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const products = useSelector(getProducts);
-  const { limit, currentPage, totalCount } = useSelector(getProductPagination);
   const isFetching = useSelector(getIsFetchingProducts);
+
+  const { limit, currentPage } = useSelector(getProductPagination);
+  const searchQuery = useSelector(getSearchQuery);
+  const filter = useSelector(getFilter);
 
   useEffect(() => {
     dispatch(fetchAllProductsAsync());
@@ -57,16 +63,20 @@ export const ProductList: FC = () => {
     [dispatch]
   );
 
-  const filteredProducts = useMemo(() => {
-    const startIdx = (currentPage - 1) * limit;
-    const endIdx = startIdx + limit;
-    return products.slice(startIdx, endIdx);
-  }, [products, currentPage, limit]);
+  const filteredProducts = useMemo(
+    () => filterProducts(products, filter, searchQuery),
+    [products, filter, searchQuery]
+  );
+
+  const paginatedProducts = useMemo(
+    () => paginateProducts(filteredProducts, currentPage, limit),
+    [filteredProducts, currentPage, limit]
+  );
 
   return (
     <div>
       <ProductListUI
-        products={filteredProducts}
+        products={paginatedProducts}
         isLoading={isFetching}
         limit={limit}
         onCardClick={onCardClick}
@@ -75,7 +85,7 @@ export const ProductList: FC = () => {
       <Pagination
         limit={limit}
         currentPage={currentPage}
-        totalCount={totalCount}
+        totalCount={filteredProducts.length}
         onPageChange={onPageChange}
       />
     </div>

@@ -1,5 +1,3 @@
-import { Dispatch, SetStateAction } from "react";
-
 export type TPagination = {
   currentPage: number;
   limit: number;

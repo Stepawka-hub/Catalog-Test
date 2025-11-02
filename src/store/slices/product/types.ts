@@ -8,7 +8,7 @@ export type TProductState = {
     isDeleting: boolean;
     isEditing: boolean;
   };
-  pagination: TPagination;
+  pagination: Omit<TPagination, "totalCount">;
   searchQuery: string;
   filter: TProductFilter;
 };

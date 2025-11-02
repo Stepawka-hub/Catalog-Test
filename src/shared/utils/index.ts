@@ -1,1 +1,5 @@
-export { getProductSelectFields } from "./product.utils";
+export {
+  getProductSelectFields,
+  filterProducts,
+  paginateProducts,
+} from "./product.utils";
