@@ -4,3 +4,6 @@ export { SkeletonCard } from "./skeleton-card";
 export { Modal } from "./modal";
 export { EmptyResults } from "./empty-results";
 export { Rating } from "./rating";
+export { Slider } from "./slider";
+export { Gallery } from "./gallery";
+export { Loader } from "./loader";
