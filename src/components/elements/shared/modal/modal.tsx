@@ -1,8 +1,16 @@
-import { FC, MouseEvent } from "react";
+import { FC, MouseEvent, useEffect } from "react";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { TModalProps } from "./types";
 
 export const Modal: FC<TModalProps> = ({ isOpen, children, onClose }) => {
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "unset";
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const handleFadeClick = (e: MouseEvent) => {
@@ -11,7 +19,7 @@ export const Modal: FC<TModalProps> = ({ isOpen, children, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center backdrop-blur-xs"
+      className="fixed inset-0 flex items-center justify-center backdrop-blur-xs z-10"
       onClick={handleFadeClick}
     >
       <div className="relative max-w-lg w-full p-6 bg-zinc-800 rounded-lg shadow-lg">
