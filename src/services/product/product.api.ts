@@ -1,30 +1,24 @@
 import api from "../api-instance";
 import { BaseAPI } from "../base";
-import { transformApiProduct } from "@/shared/utils";
+import { getProductSelectFields } from "@/shared/utils";
 import {
-  TFetchAllProductsParams,
   TFetchAllProductsResponse,
   TProductListResponse,
 } from "./product.types";
 
 class ProductAPI extends BaseAPI {
-  // Todo: Select fields
-  fetchAllProducts = async (
-    limit: number = 0,
-    skip: number = 0
-  ): Promise<TFetchAllProductsResponse> => {
-    const params: TFetchAllProductsParams = {
-      limit,
-      skip,
-    };
-
-    const { data } = await this.api.get<TProductListResponse>("products", {
-      params,
-    });
+  fetchAllProducts = async (): Promise<TFetchAllProductsResponse> => {
+    const selectFields = getProductSelectFields();
+    const { data } = await this.api.get<TProductListResponse>(
+      `products?limit=0&select=${selectFields}`
+    );
 
     return {
       totalCount: data.total,
-      products: data.products.map(transformApiProduct),
+      products: data.products.map((product) => ({
+        ...product,
+        isLiked: false,
+      })),
     };
   };
 }

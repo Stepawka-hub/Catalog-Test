@@ -5,4 +5,5 @@ export type TProductListUIProps = {
   isLoading: boolean;
   limit: number;
   onCardClick: (pId: TProductId) => void;
+  onToggleLike: (pId: TProductId) => void;
 };

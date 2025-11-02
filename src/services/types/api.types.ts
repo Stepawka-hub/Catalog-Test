@@ -7,8 +7,3 @@ export type TBaseListResponse = {
 export type TListResponse<T, K extends string = "data"> = TBaseListResponse & {
   [key in K]: T[];
 };
-
-export type TPaginationPayload = {
-  limit: number;
-  skip: number;
-};

@@ -1,5 +1,5 @@
 import { TProduct } from "@/shared/types";
-import { TListResponse, TPaginationPayload } from "../types";
+import { TListResponse } from "../types";
 
 export type TApiProduct = {
   id: number;
@@ -47,5 +47,3 @@ export type TFetchAllProductsResponse = {
   products: TProduct[];
   totalCount: number;
 };
-
-export type TFetchAllProductsParams = TPaginationPayload;

@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TProductState } from "./types";
 import { fetchAllProductsAsync } from "./thunks";
 import { TFetchAllProductsResponse } from "@/services/product";
-import { TProductFilter } from "@/shared/types";
+import { TProductFilter, TProductId } from "@/shared/types";
 
 const initialState: TProductState = {
   products: [],
@@ -34,6 +34,13 @@ export const productSlice = createSlice({
     setFilter: (state, { payload }: PayloadAction<TProductFilter>) => {
       state.filter = payload;
     },
+    toggleLike: (state, { payload }: PayloadAction<TProductId>) => {
+      const product = state.products.find((p) => p.id === payload);
+
+      if (product) {
+        product.isLiked = !product.isLiked;
+      }
+    },
   },
   selectors: {
     getProducts: (state) => state.products,
@@ -63,7 +70,7 @@ export const productSlice = createSlice({
 });
 
 export const productReducer = productSlice.reducer;
-export const { setCurrentPage, setSearchQuery, setFilter } =
+export const { setCurrentPage, setSearchQuery, setFilter, toggleLike } =
   productSlice.actions;
 export const {
   getProducts,

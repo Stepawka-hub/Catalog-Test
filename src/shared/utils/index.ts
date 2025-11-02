@@ -1,1 +1,1 @@
-export { transformApiProduct } from "./product.utils";
+export { getProductSelectFields } from "./product.utils";

@@ -19,6 +19,7 @@ export type TProduct = {
   };
   thumbnail: string;
   images: string[];
+  isLiked: boolean;
 };
 
 export type TProductFilter = "all" | "favorites";

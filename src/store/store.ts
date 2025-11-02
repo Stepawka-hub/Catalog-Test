@@ -4,7 +4,6 @@ import {
   useSelector as selectorHook,
   TypedUseSelectorHook,
 } from "react-redux";
-import { productAPI } from "@/services";
 import { productReducer } from "./slices/product";
 
 export const rootReducer = combineReducers({
