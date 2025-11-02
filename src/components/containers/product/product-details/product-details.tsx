@@ -27,7 +27,7 @@ export const ProductDetails: FC = () => {
     }
   }, [dispatch, selectedProduct, isProductsFetched]);
 
-  if (!isFetching || !isProductsFetched) {
+  if (isFetching || !isProductsFetched) {
     return <Loader label="Загружаем данные о товаре..." />;
   }
 
@@ -35,13 +35,26 @@ export const ProductDetails: FC = () => {
     return <EmptyResults label="Товар не найден" />;
   }
 
-  const { title, description, rating, stock, price, images, thumbnail } =
-    selectedProduct;
+  const {
+    title,
+    description,
+    rating,
+    stock,
+    price,
+    images,
+    thumbnail,
+    category,
+    sku,
+    brand,
+  } = selectedProduct;
 
   return (
     <ProductDetailsUI
       title={title}
       description={description}
+      category={category}
+      sku={sku}
+      brand={brand}
       rating={rating}
       stock={stock}
       price={price}

@@ -7,3 +7,4 @@ export { Rating } from "./rating";
 export { Slider } from "./slider";
 export { Gallery } from "./gallery";
 export { Loader } from "./loader";
+export { DetailsList } from "./details-list";
