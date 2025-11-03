@@ -8,10 +8,8 @@ class ProductAPI extends BaseAPI {
   fetchAllProducts = async (): Promise<TProduct[]> => {
     const selectFields = getProductSelectFields();
     const { data } = await this.api.get<TProductListResponse>(
-      `products?limit=0&select=${selectFields}`
+      `https://dummyjson.com/products?limit=0&select=${selectFields}`
     );
-
-    console.log(data, process.env.NEXT_PUBLIC_API_URL);
 
     return data.products.map((product) => ({
       ...product,
