@@ -10,13 +10,24 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --breakpoint-xs: 30rem;
 }
+
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+.product-grid {
+  @apply grid grid-cols-1 gap-y-2
+    xs:grid-cols-2 xs:gap-x-2
+    sm:gap-x-3
+    md:grid-cols-3 md:gap-y-3 md:gap-x-3 
+    lg:grid-cols-4 lg:gap-x-4 lg:gap-y-4
+    xl:grid-cols-5 xl:gap-x-5 xl:gap-y-5;
 }
 
 body {

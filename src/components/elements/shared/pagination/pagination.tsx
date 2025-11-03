@@ -1,0 +1,46 @@
+import { FC } from "react";
+import { TPaginationProps } from "./types";
+import clsx from "clsx";
+
+export const Pagination: FC<TPaginationProps> = ({
+  currentPage,
+  limit,
+  totalCount,
+  maxPages = 8,
+  onPageChange,
+}) => {
+  const pagesCount = Math.ceil(totalCount / limit);
+
+  let startPage = Math.max(1, currentPage - Math.floor(maxPages / 2));
+  let endPage = startPage + maxPages - 1;
+
+  if (endPage > pagesCount) {
+    endPage = pagesCount;
+    startPage = Math.max(1, endPage - maxPages + 1);
+  }
+
+  const pages = [];
+  for (let i = startPage; i <= endPage; i++) pages.push(i);
+
+  return (
+    <div className="flex justify-center gap-2 md:gap-3 mt-6 md:mt-8 text-xl">
+      {pages.map((page) => {
+        const isActive = page === currentPage;
+        return (
+          <button
+            key={page}
+            className={clsx(
+              "w-9 h-9 sm:w-10 sm:w-10 md:w-11 md:h-11 rounded-full bg-neutral-900 hover:cursor-pointer",
+              !isActive &&
+                "hover:opacity-85 active:opacity-75 transition duration-200 ease-in-out",
+              isActive && "bg-orange-500"
+            )}
+            onClick={() => onPageChange(page)}
+          >
+            {page}
+          </button>
+        );
+      })}
+    </div>
+  );
+};
