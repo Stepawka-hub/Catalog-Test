@@ -1,8 +1,10 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === "production";
+
 const nextConfig: NextConfig = {
+  basePath: isProd ? "/Catalog-Test" : "",
   output: "export",
-  basePath: "/Catalog-Test",
   async redirects() {
     return [
       {
