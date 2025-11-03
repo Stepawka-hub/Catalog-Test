@@ -1,10 +1,9 @@
 "use client";
 
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { useParams } from "next/navigation";
-import { useDispatch, useSelector } from "@/store";
+import { useSelector } from "@/store";
 import {
-  fetchAllProductsAsync,
   getIsFetchingProducts,
   getIsProductsFetched,
   getSelectedProduct,
@@ -12,20 +11,12 @@ import {
 import { EmptyResults, Loader, ProductDetailsUI } from "@/components/elements";
 
 export const ProductDetails: FC = () => {
-  const dispatch = useDispatch();
   const { productId } = useParams<{ productId: string }>();
-
   const selectedProduct = useSelector((state) =>
     getSelectedProduct(state, Number(productId))
   );
   const isProductsFetched = useSelector(getIsProductsFetched);
   const isFetching = useSelector(getIsFetchingProducts);
-
-  useEffect(() => {
-    if (!selectedProduct && !isProductsFetched) {
-      dispatch(fetchAllProductsAsync());
-    }
-  }, [dispatch, selectedProduct, isProductsFetched]);
 
   if (isFetching || !isProductsFetched) {
     return <Loader label="Загружаем данные о товаре..." />;

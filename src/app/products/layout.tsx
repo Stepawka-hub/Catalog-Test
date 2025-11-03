@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ProductLayoutClient } from "./client-layout";
 
 export const metadata: Metadata = {
   title: "Product details",
@@ -10,5 +11,9 @@ export default function ProductLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <div className="min-h-screen font-sans bg-neutral-800">{children}</div>;
+  return (
+    <div className="min-h-screen font-sans bg-neutral-800">
+      <ProductLayoutClient>{children}</ProductLayoutClient>
+    </div>
+  );
 }

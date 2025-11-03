@@ -1,15 +1,14 @@
 "use client";
 
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { Pagination, ProductListUI } from "@/components/elements";
 import {
   useProductsActions,
   useProductsFilters,
   useProductsPagination,
 } from "@/hooks";
-import { useDispatch, useSelector } from "@/store";
+import { useSelector } from "@/store";
 import {
-  fetchAllProductsAsync,
   getIsFetchingProducts,
   getIsProductsFetched,
   getProducts,
@@ -25,14 +24,9 @@ import {
   статичных серверных данных с клиентскими изменениями.
 */
 export const ProductList: FC = () => {
-  const dispatch = useDispatch();
   const products = useSelector(getProducts);
   const isFetching = useSelector(getIsFetchingProducts);
   const isProductsFetched = useSelector(getIsProductsFetched);
-
-  useEffect(() => {
-    dispatch(fetchAllProductsAsync());
-  }, [dispatch]);
 
   const { onCardClick, onToggleLike, onProductDelete } = useProductsActions();
   const { filteredProducts } = useProductsFilters(products);

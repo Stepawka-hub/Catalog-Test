@@ -29,8 +29,8 @@ export const ProductDetailsUI: FC<TProductDetailsProps> = ({
         ]}
       />
       <div className="flex justify-between items-end mt-auto font-medium">
-        <span className="text-2xl">В наличии: {stock} шт.</span>
-        <span className="text-3xl text-green-500">{price} ₽</span>
+        <span className="text-xl">В наличии: {stock} шт.</span>
+        <span className="text-2xl text-green-500">{price} ₽</span>
       </div>
     </div>
   </div>
