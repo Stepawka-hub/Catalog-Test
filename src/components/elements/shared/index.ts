@@ -8,3 +8,5 @@ export { ImageThumbnails } from "./image-thumbnails";
 export { GalleryUI } from "./gallery";
 export { Loader } from "./loader";
 export { DetailsList } from "./details-list";
+export { Form } from "./form";
+export { FormWrapper } from "./form-wrapper";

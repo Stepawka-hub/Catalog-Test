@@ -8,13 +8,8 @@ export type TProduct = {
   price: number;
   rating: number;
   stock: number;
-  tags: string[];
   brand?: string;
   sku: string;
-  meta: {
-    createdAt: string;
-    updatedAt: string;
-  };
   thumbnail: string;
   images: string[];
   isLiked: boolean;

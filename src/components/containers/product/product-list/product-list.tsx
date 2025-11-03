@@ -1,8 +1,8 @@
 "use client";
 
-import { FC } from "react";
-import { Pagination, ProductListUI } from "@/components/elements";
+import { FC, useState } from "react";
 import {
+  useEditProductModal,
   useProductsActions,
   useProductsFilters,
   useProductsPagination,
@@ -13,6 +13,8 @@ import {
   getIsProductsFetched,
   getProducts,
 } from "@/store/slices";
+import { EditProductForm } from "@/components/containers";
+import { Modal, Pagination, ProductListUI } from "@/components/elements";
 
 /*
   Архитектурное решение: 
@@ -33,6 +35,14 @@ export const ProductList: FC = () => {
   const { paginatedProducts, limit, currentPage, onPageChange } =
     useProductsPagination(filteredProducts);
 
+  const {
+    editingProductId,
+    isEditModalOpen,
+    openEditModal,
+    closeEditModal,
+    handleEditSuccess,
+  } = useEditProductModal();
+
   return (
     <div>
       <ProductListUI
@@ -43,6 +53,7 @@ export const ProductList: FC = () => {
         onCardClick={onCardClick}
         onToggleLike={onToggleLike}
         onDelete={onProductDelete}
+        onEdit={openEditModal}
       />
       <Pagination
         limit={limit}
@@ -50,6 +61,15 @@ export const ProductList: FC = () => {
         totalCount={filteredProducts.length}
         onPageChange={onPageChange}
       />
+      <Modal isOpen={isEditModalOpen} onClose={closeEditModal}>
+        {editingProductId && (
+          <EditProductForm
+            productId={editingProductId}
+            onSuccess={handleEditSuccess}
+            onCancel={closeEditModal}
+          />
+        )}
+      </Modal>
     </div>
   );
 };

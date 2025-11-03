@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Product catalog",
-  description: "Product catalog",
+  title: "Каталог",
+  description: "Каталог товаров",
   icons: {
     icon: "./favicon.ico",
   },

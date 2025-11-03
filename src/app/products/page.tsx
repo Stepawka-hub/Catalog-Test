@@ -1,4 +1,5 @@
 import {
+  CreateProductButton,
   ProductFilter,
   ProductList,
   ProductSearch,
@@ -10,6 +11,7 @@ export default function Catalog() {
       <div className="flex gap-2 sm:gap-3 md:gap-4 items-center">
         <ProductSearch />
         <ProductFilter />
+        <CreateProductButton />
       </div>
       <ProductList />
     </main>

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { ProductLayoutClient } from "./client-layout";
 
 export const metadata: Metadata = {
-  title: "Product details",
-  description: "Product details",
+  title: "Каталог",
+  description: "Каталог товаров",
 };
 
 export default function ProductLayout({

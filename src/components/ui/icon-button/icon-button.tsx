@@ -9,7 +9,7 @@ export const IconButton: FC<TIconButtonProps> = ({
 }) => (
   <button
     className={clsx(
-      "p-2 rounded-full bg-neutral-800 hover:cursor-pointer hover:opacity-85 active:opacity-75 transition-opacity duration-150",
+      "p-2 rounded-full bg-neutral-800 hover:cursor-pointer hover:opacity-85 active:opacity-75 transition-opacity duration-200",
       className
     )}
     {...props}

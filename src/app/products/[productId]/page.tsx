@@ -1,6 +1,12 @@
 import { ROUTES } from "@/config/routes";
 import { BackButton, ProductDetails } from "@/components/containers";
 import { IoArrowBack } from "react-icons/io5";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Детали товара",
+  description: "Детали товара",
+};
 
 export default function ProductPage() {
   return (

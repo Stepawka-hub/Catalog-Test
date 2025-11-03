@@ -11,8 +11,9 @@ const ProductCard: FC<TProductCardProps> = ({
   onCardClick,
   onToggleLike,
   onDelete,
+  onEdit,
 }) => {
-  const { title, price, rating, thumbnail, isLiked } = product;
+  const { id, title, price, rating, thumbnail, isLiked } = product;
 
   const handleCardClick = () => {
     onCardClick(product.id);
@@ -20,16 +21,17 @@ const ProductCard: FC<TProductCardProps> = ({
 
   const handleToggleLike = (e: MouseEvent) => {
     e.stopPropagation();
-    onToggleLike(product.id);
+    onToggleLike(id);
   };
 
   const handleDelete = (e: MouseEvent) => {
     e.stopPropagation();
-    onDelete(product.id);
+    onDelete(id);
   };
 
   const handleEdit = (e: MouseEvent) => {
     e.stopPropagation();
+    onEdit(id);
   };
 
   return (

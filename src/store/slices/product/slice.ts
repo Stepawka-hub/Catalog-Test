@@ -35,6 +35,13 @@ export const productSlice = createSlice({
         product.isLiked = !product.isLiked;
       }
     },
+    editProduct: (state, { payload }: PayloadAction<TProduct>) => {
+      const index = state.products.findIndex((p) => p.id === payload.id);
+
+      if (index !== -1) {
+        state.products[index] = payload;
+      }
+    },
     deleteProduct: (state, { payload }: PayloadAction<TProductId>) => {
       state.products = state.products.filter((p) => p.id !== payload);
     },
@@ -73,6 +80,7 @@ export const {
   setSearchQuery,
   setFilter,
   toggleLike,
+  editProduct,
   deleteProduct,
 } = productSlice.actions;
 export const {

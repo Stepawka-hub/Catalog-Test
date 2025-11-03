@@ -5,4 +5,5 @@ export type TProductCardProps = {
   onCardClick: TProductAction;
   onToggleLike: TProductAction;
   onDelete: TProductAction;
+  onEdit: TProductAction;
 };

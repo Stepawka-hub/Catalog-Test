@@ -8,4 +8,5 @@ export type TProductListUIProps = {
   onCardClick: TProductAction;
   onToggleLike: TProductAction;
   onDelete: TProductAction;
+  onEdit: TProductAction;
 };
