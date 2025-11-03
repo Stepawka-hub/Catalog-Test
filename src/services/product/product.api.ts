@@ -11,6 +11,8 @@ class ProductAPI extends BaseAPI {
       `products?limit=0&select=${selectFields}`
     );
 
+    console.log(data, process.env.NEXT_PUBLIC_API_URL);
+
     return data.products.map((product) => ({
       ...product,
       id: String(product.id),
