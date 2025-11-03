@@ -1,4 +1,4 @@
-import { FC, MouseEvent } from "react";
+import { FC, memo, MouseEvent } from "react";
 import Image from "next/image";
 import { IconButton, LikeButton } from "@/components/ui";
 import { Rating } from "@/components/elements";
@@ -6,7 +6,7 @@ import { MdDelete } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
 import { TProductCardProps } from "./types";
 
-export const ProductCard: FC<TProductCardProps> = ({
+const ProductCard: FC<TProductCardProps> = ({
   product,
   onCardClick,
   onToggleLike,
@@ -66,3 +66,5 @@ export const ProductCard: FC<TProductCardProps> = ({
     </article>
   );
 };
+
+export const MemoizedProductCard = memo(ProductCard);

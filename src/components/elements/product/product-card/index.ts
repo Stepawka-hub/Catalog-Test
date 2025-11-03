@@ -1,1 +1,1 @@
-export { ProductCard } from "./product-card";
+export { MemoizedProductCard as ProductCard } from "./product-card";
