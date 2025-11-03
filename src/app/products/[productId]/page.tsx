@@ -9,11 +9,7 @@ export const metadata: Metadata = {
 };
 
 export async function generateStaticParams() {
-  return [
-    ...Array.from({ length: 200 }, (_, idx) => ({
-      productId: (idx + 1).toString(),
-    })),
-  ];
+  return [];
 }
 
 export default function ProductPage() {
