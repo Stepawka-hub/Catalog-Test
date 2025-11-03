@@ -8,7 +8,7 @@ class ProductAPI extends BaseAPI {
   fetchAllProducts = async (): Promise<TProduct[]> => {
     const selectFields = getProductSelectFields();
     const { data } = await this.api.get<TProductListResponse>(
-      `https://dummyjson.com/products?limit=0&select=${selectFields}`
+      `products?limit=0&select=${selectFields}`
     );
 
     return data.products.map((product) => ({

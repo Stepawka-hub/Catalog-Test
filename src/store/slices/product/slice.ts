@@ -42,8 +42,10 @@ export const productSlice = createSlice({
       }
     },
     addProduct: {
-      reducer: (state, action: PayloadAction<TProduct>) => {
-        state.products.unshift(action.payload);
+      reducer: (state, { payload }: PayloadAction<TProduct>) => {
+        // Note: Временный костыль для генерации страниц на GH-pages
+        payload.id = String(state.products.length + 1);
+        state.products.unshift(payload);
       },
       prepare: (createProduct: TCreateProduct) => {
         const id = nanoid();
