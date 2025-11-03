@@ -1,8 +1,8 @@
-import { TProduct, TProductId } from "@/shared/types";
+import { TProduct, TProductAction } from "@/shared/types";
 
 export type TProductCardProps = {
   product: TProduct;
-  onCardClick: (pId: TProductId) => void;
-  onToggleLike: (pId: TProductId) => void;
-  onDelete: (pId: TProductId) => void;
+  onCardClick: TProductAction;
+  onToggleLike: TProductAction;
+  onDelete: TProductAction;
 };

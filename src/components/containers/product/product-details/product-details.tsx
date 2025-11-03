@@ -9,6 +9,7 @@ import {
   getSelectedProduct,
 } from "@/store/slices";
 import { EmptyResults, Loader, ProductDetailsUI } from "@/components/elements";
+import { useProductsActions } from "@/hooks";
 
 export const ProductDetails: FC = () => {
   const { productId } = useParams<{ productId: string }>();
@@ -17,6 +18,7 @@ export const ProductDetails: FC = () => {
   );
   const isProductsFetched = useSelector(getIsProductsFetched);
   const isFetching = useSelector(getIsFetchingProducts);
+  const { onToggleLike } = useProductsActions();
 
   if (isFetching || !isProductsFetched) {
     return <Loader label="Загружаем данные о товаре..." />;
@@ -26,31 +28,7 @@ export const ProductDetails: FC = () => {
     return <EmptyResults label="Товар не найден" />;
   }
 
-  const {
-    title,
-    description,
-    rating,
-    stock,
-    price,
-    images,
-    thumbnail,
-    category,
-    sku,
-    brand,
-  } = selectedProduct;
-
   return (
-    <ProductDetailsUI
-      title={title}
-      description={description}
-      category={category}
-      sku={sku}
-      brand={brand}
-      rating={rating}
-      stock={stock}
-      price={price}
-      thumbnail={thumbnail}
-      images={images}
-    />
+    <ProductDetailsUI product={selectedProduct} onToggleLike={onToggleLike} />
   );
 };

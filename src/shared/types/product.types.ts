@@ -21,3 +21,4 @@ export type TProduct = {
 };
 
 export type TProductFilter = "all" | "favorites";
+export type TProductAction = (productId: TProductId) => void;

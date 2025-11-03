@@ -1,11 +1,11 @@
-import { TProduct, TProductId } from "@/shared/types";
+import { TProduct, TProductAction } from "@/shared/types";
 
 export type TProductListUIProps = {
   products: TProduct[];
   isLoading: boolean;
   isFetched: boolean;
   limit: number;
-  onCardClick: (pId: TProductId) => void;
-  onToggleLike: (pId: TProductId) => void;
-  onDelete: (pId: TProductId) => void;
+  onCardClick: TProductAction;
+  onToggleLike: TProductAction;
+  onDelete: TProductAction;
 };

@@ -1,15 +1,10 @@
 import { FC, MouseEvent } from "react";
-import { TProductCardProps } from "./types";
 import Image from "next/image";
-
-import { MdFavoriteBorder } from "react-icons/md";
-import { MdFavorite } from "react-icons/md";
+import { IconButton, LikeButton } from "@/components/ui";
+import { Rating } from "@/components/elements";
 import { MdDelete } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
-import { IoIosStar } from "react-icons/io";
-
-import { IconButton } from "@/components/ui";
-import { Rating } from "../../shared";
+import { TProductCardProps } from "./types";
 
 export const ProductCard: FC<TProductCardProps> = ({
   product,
@@ -58,13 +53,7 @@ export const ProductCard: FC<TProductCardProps> = ({
           </IconButton>
         </div>
         <div className="mr-2">
-          <IconButton onClick={handleToggleLike}>
-            {isLiked ? (
-              <MdFavorite className="text-xl text-red-400" />
-            ) : (
-              <MdFavoriteBorder className="text-xl " />
-            )}
-          </IconButton>
+          <LikeButton isLiked={isLiked} onClick={handleToggleLike} />
         </div>
       </div>
       <div className="w-full flex flex-col gap-1">
