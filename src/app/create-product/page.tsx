@@ -1,5 +1,20 @@
+import { BackButton, CreateProductForm } from "@/components/containers";
+import { ROUTES } from "@/config/routes";
+import { IoArrowBack } from "react-icons/io5";
+
 export default function CreateProduct() {
   return (
-    <main className="flex flex-col min-h-screen w-full gap-3 sm:gap-4 md:gap-5 py-6 px-3 sm:py-8 sm:px-6 lg:py-12 lg:px-8 bg-neutral-800"></main>
+    <main className="py-4 px-4 sm:py-6 sm:px-6 lg:py-8 lg:px-8">
+      <BackButton
+        path={ROUTES.CATALOG}
+        className="mb-4 sm:mb-6"
+        startIcon={<IoArrowBack className="text-xl" />}
+      >
+        Вернуться в каталог
+      </BackButton>
+      <div className="max-w-200 mx-auto">
+        <CreateProductForm />
+      </div>
+    </main>
   );
 }

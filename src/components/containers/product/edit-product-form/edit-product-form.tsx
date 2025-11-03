@@ -15,7 +15,7 @@ export const EditProductForm: FC<TProductEditFormProps> = ({
   onCancel,
 }) => {
   const editableProduct = useSelector((state) =>
-    getSelectedProduct(state, Number(productId))
+    getSelectedProduct(state, productId)
   );
 
   const dispatch = useDispatch();

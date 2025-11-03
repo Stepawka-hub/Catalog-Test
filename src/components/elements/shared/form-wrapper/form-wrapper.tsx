@@ -8,7 +8,7 @@ export const FormWrapper: FC<TFormWrapperProps> = ({
 }) => (
   <form {...props}>
     {title && (
-      <h2 className="mb-3 text-center font-medium text-orange-400 text-lg md:text-2xl">
+      <h2 className="mb-3 text-center font-medium text-lg md:text-2xl">
         {title}
       </h2>
     )}

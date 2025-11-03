@@ -1,4 +1,4 @@
-export type TProductId = number;
+export type TProductId = string;
 
 export type TProduct = {
   id: TProductId;
@@ -14,6 +14,17 @@ export type TProduct = {
   images: string[];
   isLiked: boolean;
 };
+
+export type TCreateProduct = Pick<
+  TProduct,
+  | "title"
+  | "description"
+  | "category"
+  | "price"
+  | "stock"
+  | "brand"
+  | "thumbnail"
+>;
 
 export type TProductFilter = "all" | "favorites" | "high rating";
 export type TProductAction = (productId: TProductId) => void;

@@ -1,7 +1,13 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
 import { TProductState } from "./types";
 import { fetchAllProductsAsync } from "./thunks";
-import { TProduct, TProductFilter, TProductId } from "@/shared/types";
+import {
+  TCreateProduct,
+  TProduct,
+  TProductFilter,
+  TProductId,
+} from "@/shared/types";
+import { generateSKU } from "@/shared/utils";
 
 const initialState: TProductState = {
   products: [],
@@ -34,6 +40,25 @@ export const productSlice = createSlice({
       if (product) {
         product.isLiked = !product.isLiked;
       }
+    },
+    addProduct: {
+      reducer: (state, action: PayloadAction<TProduct>) => {
+        state.products.unshift(action.payload);
+      },
+      prepare: (createProduct: TCreateProduct) => {
+        const id = nanoid();
+        const sku = generateSKU();
+        return {
+          payload: {
+            id,
+            sku,
+            rating: 5.0,
+            isLiked: false,
+            images: [createProduct.thumbnail],
+            ...createProduct,
+          },
+        };
+      },
     },
     editProduct: (state, { payload }: PayloadAction<TProduct>) => {
       const index = state.products.findIndex((p) => p.id === payload.id);
@@ -82,6 +107,7 @@ export const {
   toggleLike,
   editProduct,
   deleteProduct,
+  addProduct,
 } = productSlice.actions;
 export const {
   getProducts,

@@ -14,7 +14,7 @@ import { useProductsActions } from "@/hooks";
 export const ProductDetails: FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const selectedProduct = useSelector((state) =>
-    getSelectedProduct(state, Number(productId))
+    getSelectedProduct(state, productId)
   );
   const isProductsFetched = useSelector(getIsProductsFetched);
   const isFetching = useSelector(getIsFetchingProducts);

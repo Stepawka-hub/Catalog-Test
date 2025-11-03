@@ -40,3 +40,10 @@ export const paginateProducts = (
   const endIdx = startIdx + limit;
   return products.slice(startIdx, endIdx);
 };
+
+export const generateSKU = (): string => {
+  const prefix = "PRD";
+  const timestamp = Date.now().toString().slice(-6);
+  const random = Math.random().toString(36).substring(2, 5).toUpperCase();
+  return `${prefix}-${timestamp}-${random}`;
+};

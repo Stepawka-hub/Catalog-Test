@@ -13,6 +13,7 @@ class ProductAPI extends BaseAPI {
 
     return data.products.map((product) => ({
       ...product,
+      id: String(product.id),
       isLiked: false,
     }));
   };

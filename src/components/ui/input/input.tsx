@@ -41,7 +41,7 @@ export const Input: FC<TInputProps> = ({
       />
       {error && (
         <span
-          className={clsx("mt-1 text-sm sm:text-base text-red-500", errorClass)}
+          className={clsx("mt-0.5 text-sm sm:text-base text-red-500", errorClass)}
         >
           {error}
         </span>
