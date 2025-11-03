@@ -7,6 +7,7 @@ import { Form } from "@/components/elements";
 import { editProduct, getSelectedProduct } from "@/store/slices";
 import { EDIT_PRODUCT_FORM_FIELDS } from "@/shared/constants";
 import { TProductEditFormFields, TProductEditFormProps } from "./types";
+import { Button } from "@/components/ui";
 
 export const EditProductForm: FC<TProductEditFormProps> = ({
   productId,
@@ -52,13 +53,17 @@ export const EditProductForm: FC<TProductEditFormProps> = ({
   return (
     <FormProvider {...methods}>
       <Form
-        title="Редактирование формы"
+        title="Редактирование товара"
         fields={EDIT_PRODUCT_FORM_FIELDS}
         onSubmit={handleSubmit(onSubmit)}
         actions={
-          <div className="flex gap-2">
-            <button type="submit">Сохранить</button>
-            <button onClick={onCancel}>Отменить</button>
+          <div className="flex gap-3 mt-2 self-end">
+            <Button type="submit" className="bg-green-600">
+              Сохранить
+            </Button>
+            <Button className="bg-red-400" onClick={onCancel}>
+              Отменить
+            </Button>
           </div>
         }
       />
