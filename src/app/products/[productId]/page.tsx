@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   description: "Детали товара",
 };
 
+export async function generateStaticParams() {
+  return [{ productId: "test" }];
+}
+
 export default function ProductPage() {
   return (
     <main className="py-4 px-4 sm:py-6 sm:px-6 lg:py-8 lg:px-8">
