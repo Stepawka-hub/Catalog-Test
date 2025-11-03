@@ -4,7 +4,6 @@ import { TProduct } from "@/shared/types";
 
 const FETCH_ALL_PRODUCTS = "products/fetch-all";
 
-// Todo: error handle
 export const fetchAllProductsAsync = createAsyncThunk<TProduct[]>(
   FETCH_ALL_PRODUCTS,
   async (_, { rejectWithValue }) => {
@@ -13,7 +12,7 @@ export const fetchAllProductsAsync = createAsyncThunk<TProduct[]>(
       return products;
     } catch (err) {
       console.error("Error fetching products:", err);
-      return rejectWithValue("");
+      return rejectWithValue("Ошибка загрузки товаров");
     }
   }
 );

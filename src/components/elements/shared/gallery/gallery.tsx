@@ -10,7 +10,7 @@ export const GalleryUI: FC<TGalleryUIProps> = ({
   onImageClick,
 }) => {
   return (
-    <div className="flex flex-col gap-2 p-4 bg-neutral-900 rounded-lg">
+    <div className="flex flex-col gap-4 p-4 bg-neutral-900 rounded-lg">
       <Image
         src={selectedImage}
         width={384}

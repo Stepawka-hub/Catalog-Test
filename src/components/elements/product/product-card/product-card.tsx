@@ -36,14 +36,15 @@ const ProductCard: FC<TProductCardProps> = ({
 
   return (
     <article
-      className="relative flex flex-col items-center min-h-50 p-2 bg-neutral-900 rounded-lg hover:cursor-pointer"
+      className="relative flex flex-col gap-2 items-center min-h-50 p-2 bg-neutral-900 rounded-lg hover:cursor-pointer"
       onClick={handleCardClick}
     >
       <Image
         width={192}
         height={192}
         src={thumbnail}
-        alt={`${title} preview`}
+        alt={`${title} thumbnail`}
+        className="w-48 h-48 object-cover"
       />
       <div className="absolute w-full flex justify-between">
         <div className="flex gap-2 ml-2">
