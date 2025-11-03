@@ -1,6 +1,6 @@
 export type TDetailsItem = {
   label: string;
-  value: string | number;
+  value?: string | number;
 };
 
 export type TDetailsListProps = {

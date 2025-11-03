@@ -1,21 +1,9 @@
-import { PRODUCT_FILTER } from "../constants";
+import {
+  PRODUCT_FIELDS,
+  PRODUCT_FILTER,
+  PRODUCT_HIGH_RATING,
+} from "../constants";
 import { TProduct, TProductFilter } from "../types";
-
-const PRODUCT_FIELDS: (keyof TProduct)[] = [
-  "id",
-  "title",
-  "description",
-  "category",
-  "price",
-  "rating",
-  "stock",
-  "tags",
-  "brand",
-  "sku",
-  "meta",
-  "thumbnail",
-  "images",
-];
 
 export const getProductSelectFields = () => PRODUCT_FIELDS.join(",");
 
@@ -28,6 +16,10 @@ export const filterProducts = (
 
   if (filter === PRODUCT_FILTER.FAVORITES) {
     filtered = filtered.filter((product) => product.isLiked);
+  } else if (filter === PRODUCT_FILTER.HIGH_RATING) {
+    filtered = filtered.filter(
+      (product) => product.rating >= PRODUCT_HIGH_RATING
+    );
   }
 
   if (searchQuery.trim()) {

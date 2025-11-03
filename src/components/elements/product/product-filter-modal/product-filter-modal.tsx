@@ -39,6 +39,14 @@ export const ProductFilterModal: FC<TProductFilterModalProps> = ({
             onChange={handleChange}
             checked={filter === PRODUCT_FILTER.FAVORITES}
           />
+          <Radio
+            id={PRODUCT_FILTER.HIGH_RATING}
+            name="filter"
+            label="Высокий рейтинг"
+            value={PRODUCT_FILTER.HIGH_RATING}
+            onChange={handleChange}
+            checked={filter === PRODUCT_FILTER.HIGH_RATING}
+          />
         </fieldset>
       </div>
     </Modal>

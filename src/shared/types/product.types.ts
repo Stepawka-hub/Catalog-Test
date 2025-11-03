@@ -9,7 +9,7 @@ export type TProduct = {
   rating: number;
   stock: number;
   tags: string[];
-  brand: string;
+  brand?: string;
   sku: string;
   meta: {
     createdAt: string;
@@ -20,5 +20,5 @@ export type TProduct = {
   isLiked: boolean;
 };
 
-export type TProductFilter = "all" | "favorites";
+export type TProductFilter = "all" | "favorites" | "high rating";
 export type TProductAction = (productId: TProductId) => void;

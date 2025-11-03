@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { Rating, Gallery, DetailsList } from "@/components/elements";
+import { Gallery } from "@/components/containers";
+import { Rating, DetailsList } from "@/components/elements";
 import { LikeButton } from "@/components/ui";
 import { TProductDetailsProps } from "./types";
 

@@ -1,5 +1,4 @@
-export type TGalleryUIProps = {
-  name: string;
+export type TImageThumbnailsProps = {
   images: string[];
   selectedImage: string;
   onImageClick: (image: string) => void;
