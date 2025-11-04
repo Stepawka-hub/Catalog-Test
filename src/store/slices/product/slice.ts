@@ -30,9 +30,11 @@ export const productSlice = createSlice({
     },
     setSearchQuery: (state, { payload }: PayloadAction<string>) => {
       state.searchQuery = payload;
+      state.pagination.currentPage = 1;
     },
     setFilter: (state, { payload }: PayloadAction<TProductFilter>) => {
       state.filter = payload;
+      state.pagination.currentPage = 1;
     },
     toggleLike: (state, { payload }: PayloadAction<TProductId>) => {
       const product = state.products.find((p) => p.id === payload);
